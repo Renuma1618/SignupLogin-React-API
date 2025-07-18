@@ -20,8 +20,11 @@ const handleLogin = async (e) => {
     }
     const users = await response.json();
     const user = users.find(
-      (u) => u.name === name && u.password === password
-    );
+  (u) =>
+    u.name.trim().toLowerCase() === name.trim().toLowerCase() &&
+    u.password === password
+);
+
 
     if (user) {
       alert("Login successful!");
@@ -39,23 +42,30 @@ const handleLogin = async (e) => {
     
     
   return (
-    <div className='login-container'>
-        <form className='login-form' onSubmit={handleLogin}>
-          <h1>Login </h1>
-        <label htmlFor ="email"> Email</label>
-        <input type="text" name="email" value={name}
-          onChange={(e) => setName(e.target.value)}></input>
+  <div className='login-container'>
+    <form className='login-form' onSubmit={handleLogin}>
+      <h1>Login</h1>
 
-        <label htmlFor="password">Password</label>
-        <input type="password" name="password"  value={password}
-          onChange={(e) => setpassword(e.target.value)}></input>
-          <button type="submit"  >Login</button>
-        
-      </form>
-       
-     
-    </div>
-  )
+      <label htmlFor="name">Name</label>
+      <input
+        type="text"
+        name="name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
+
+      <label htmlFor="password">Password</label>
+      <input
+        type="password"
+        name="password"
+        value={password}
+        onChange={(e) => setpassword(e.target.value)}
+      />
+
+      <button type="submit">Login</button>
+    </form>
+  </div>
+);
 }
 
 export default Loginpage
