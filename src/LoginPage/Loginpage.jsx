@@ -21,7 +21,7 @@ const handleLogin = async (e) => {
     const users = await response.json();
     const user = users.find(
   (u) =>
-    u.name.trim().toLowerCase() === name.trim().toLowerCase() &&
+    u.name.trim().toLowerCase() === email.trim().toLowerCase() &&
     u.password === password
 );
 
@@ -46,7 +46,7 @@ const handleLogin = async (e) => {
     <form className='login-form' onSubmit={handleLogin}>
       <h1>Login</h1>
 
-      <label htmlFor="email">Name</label>
+      <label htmlFor="email">Email</label>
       <input
         type="Email"
         name="Email"
