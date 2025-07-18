@@ -1,0 +1,90 @@
+/* Signup.css */
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.signup-form {
+  background-color: #ffffff;
+  padding: 40px 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  width: 400px;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.signup-form h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #4b0082;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.signup-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #333;
+}
+
+.signup-form input {
+  width: 80%;
+  padding: 10px 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  background-color: #f9f9f9;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.signup-form input:focus {
+  border-color: #8e44ad;
+  outline: none;
+  background-color: #fff;
+  box-shadow: 0 0 0 3px rgba(142, 68, 173, 0.2);
+}
+
+.signup-form button {
+  width: 80%;
+  padding: 12px;
+  background: linear-gradient(90deg, #8e2de2, #4a00e0);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.signup-form button:hover {
+  background: linear-gradient(90deg, #7b1fa2, #311b92);
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
