@@ -21,7 +21,7 @@ const handleLogin = async (e) => {
     const users = await response.json();
     const user = users.find(
   (u) =>
-    u.name.trim().toLowerCase() === email.trim().toLowerCase() &&
+    u.email.trim().toLowerCase() === email.trim().toLowerCase() &&
     u.password === password
 );
 
