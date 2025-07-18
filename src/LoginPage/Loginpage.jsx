@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 const Loginpage = () => {
   const navigate = useNavigate();
 
-    const[name, setName] =useState("")
+    const[email, setEmail] =useState("")
     const [password, setpassword]  = useState("") 
 
 const handleLogin = async (e) => {
@@ -28,7 +28,7 @@ const handleLogin = async (e) => {
 
     if (user) {
       alert("Login successful!");
-      setName("");
+      setEmail("");
       setpassword("");
       navigate('/welcome');
     } else {
@@ -46,12 +46,12 @@ const handleLogin = async (e) => {
     <form className='login-form' onSubmit={handleLogin}>
       <h1>Login</h1>
 
-      <label htmlFor="name">Name</label>
+      <label htmlFor="email">Name</label>
       <input
-        type="text"
-        name="name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
+        type="Email"
+        name="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
       />
 
       <label htmlFor="password">Password</label>
