@@ -1,71 +1,42 @@
-import React, {  useState } from 'react'
-import './Loginpage.css'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import "./Loginpage.css"
+ 
 
+function Loginpage() {
+    const navigate= useNavigate()
+    const [email,setEmail]=useState("")
+    const [password,setPassword]=useState("")
+    async function handleLogin(e){
+        e.preventDefault();
+        if(!email || !password){
+            alert("Fill the form")
+        }else{
 
-const Loginpage = () => {
-  const navigate = useNavigate();
-
-    const[email, setEmail] =useState("")
-    const [password, setpassword]  = useState("") 
-
-const handleLogin = async (e) => {
-  e.preventDefault();
-  try {
-    const response = await fetch("https://687262f476a5723aacd48352.mockapi.io/Login", {
-      method: 'GET',
-    });
-    if (!response.ok) {
-      throw new Error("Failed to fetch users");
+        
+        var response=await fetch("https://687262f476a5723aacd48352.mockapi.io/Login")
+        var data=await response.json()
+            var result = data.find(item => item.email === email && item.password === password);
+        if(result){
+            alert("Login Success")
+            navigate("/Welcome")
+        }else{
+            alert("Invalid Credentials")
+        }
     }
-    const users = await response.json();
-    const user = users.find(
-  (u) =>
-    u.email.trim().toLowerCase() === email.trim().toLowerCase() &&
-    u.password === password
-);
-
-
-    if (user) {
-      alert("Login successful!");
-      setEmail("");
-      setpassword("");
-      navigate('/welcome');
-    } else {
-      alert("Login failed. Incorrect name or password.");
-    }
-  } catch (error) {
-    console.error("Login error:", error);
-    alert("Something went wrong. Please try again later.");
-  }
-};
-    
-    
-  return (
-  <div className='login-container'>
-    <form className='login-form' onSubmit={handleLogin}>
-      <h1>Login</h1>
-
-      <label htmlFor="email">Email</label>
-      <input
-        type="Email"
-        name="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-
-      <label htmlFor="password">Password</label>
-      <input
-        type="password"
-        name="password"
-        value={password}
-        onChange={(e) => setpassword(e.target.value)}
-      />
-
-      <button type="submit">Login</button>
-    </form>
-  </div>
-);
 }
+  return (
+    <div>
+      <form id='form' onSubmit={handleLogin} action="">
+         <label htmlFor=''>Email: </label>
+        <input type='email' value={email} onChange={(e)=>{setEmail(e.target.value)}}/>
+        <label htmlFor=''>Password: </label>
+        <input type='password' value={password} onChange={(e)=>{setPassword(e.target.value)}}/>
+        <button>Login</button>
+      </form>
+    </div>
+  )
+}
+
 
 export default Loginpage
